@@ -296,7 +296,7 @@ public class MazeRaceGui extends JFrame implements ActionListener, KeyListener {
     // Method to play the background music
     private void playBGM() {
         try {
-            File soundFile = new File("sounds/Bgm.wav");
+            File soundFile = new File("Bgm.wav");
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
 
             // Get a Clip instance
@@ -323,7 +323,7 @@ public class MazeRaceGui extends JFrame implements ActionListener, KeyListener {
     // Method to play the coin sound effect
     private void playCoinSound() {
         try {
-            File soundFile = new File("sounds/CoinSound.wav");
+            File soundFile = new File("CoinSound.wav");
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
 
             // Get a Clip instance
