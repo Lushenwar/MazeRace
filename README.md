@@ -20,3 +20,8 @@ This video game has players navigate through a maze in the fastest time, collect
 - Moving Algorithm: Manages character movement within a castle maze, handling animations and updating the character image based on movement direction and actions like jumping, moving, and stopping. It initializes the character's position, direction, and state, and updates these attributes based on user inputs and game events.
 
 # Preview
+
+https://github.com/user-attachments/assets/ff33434a-764e-4aae-9730-482b99bc2699
+
+https://github.com/user-attachments/assets/d7fbeff6-da5f-4b69-88c7-f6583df308ca
+
