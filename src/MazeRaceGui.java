@@ -15,10 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.sound.sampled.*;
 
-import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
 @SuppressWarnings("serial")
 public class MazeRaceGui extends JFrame implements ActionListener, KeyListener {
 
@@ -75,11 +71,11 @@ public class MazeRaceGui extends JFrame implements ActionListener, KeyListener {
     public MazeRaceGui() {
 
         // Calls on methods to set up game components
-        playBGM();
         selectCharacter();
         scoreboardPanelSetup();
         mazePanelSetup();
         frameSetup();
+        playBGM(); // Ensure to play BGM after setting up everything
 
     }
 
@@ -230,13 +226,7 @@ public class MazeRaceGui extends JFrame implements ActionListener, KeyListener {
         }
     }
 
-    // Method for when a key is typed (not used)
-    @Override
-    public void keyTyped(KeyEvent event) {
-        // NOT USED
-    }
-
-    // Method for when a key is pressed
+    // Method for handling key presses
     @Override
     public void keyPressed(KeyEvent key) {
         if (key.getKeyCode() == KeyEvent.VK_UP && maze[player.getRow() - 1][player.getCol()].getIcon() != WALL)
@@ -285,7 +275,6 @@ public class MazeRaceGui extends JFrame implements ActionListener, KeyListener {
 
             if (choice == JOptionPane.YES_OPTION) {
                 resetGame();
-                playBGM(); // Restart the background music
             } else {
                 new MazeRaceOpeningScreen();
                 dispose();
@@ -295,6 +284,8 @@ public class MazeRaceGui extends JFrame implements ActionListener, KeyListener {
 
     // Method to play the background music
     private void playBGM() {
+        stopBGM(); // Ensure any previous instance of the background music is stopped
+
         try {
             File soundFile = new File("Bgm.wav");
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
@@ -347,12 +338,10 @@ public class MazeRaceGui extends JFrame implements ActionListener, KeyListener {
 
     // Method to reset the game state for retry
     private void resetGame() {
+        stopBGM(); // Ensure the background music stops
         MazeRaceOpeningScreen.highscore = Math.max(score, highscore);
-        setVisible(false);
-        MazeRaceGui MazeRaceGui = new MazeRaceGui();
-    }
-
-    public static void main(String[] args) {
+        this.setVisible(false);
         new MazeRaceGui();
+        this.dispose(); // Ensure the current frame is disposed of
     }
 }
